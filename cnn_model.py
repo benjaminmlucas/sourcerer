@@ -55,5 +55,5 @@ class ConvModel(nn.Module):
 
 
 if __name__ == "__main__":
-	test_model = TempCNN()
+	test_model = ConvModel()
 	summary(test_model, input_size=(10, 37))
