@@ -1,3 +1,3 @@
-# bayes-reg
-Bayesian Regularizer for Semi Supervised Domain Adaptation
+# Sourcerer
+A Bayesian-inspired deep learning method for semi-supervised domain adaptation
 
