@@ -88,22 +88,3 @@ class SourceRegLoss(nn.modules.module.Module):
             loss += sq_diff_reg
         return loss
 
-
-if __name__ == '__main__':
-    predictions = torch.randn(3, 5, requires_grad=True)
-    # print(predictions)
-    actual = torch.empty(3, dtype=torch.long).random_(5)
-    # print(actual)
-
-    src = torch.load("/media/benny/SeaBenBlue/pytorch_results/TempCNN_results/CNN_semisup_s_T31TEL_t_T31TDJ_run_0_model.pth")
-    tgt = torch.load("/media/benny/SeaBenBlue/pytorch_results/TempCNN_results/CNN_semisup_s_T31TEL_t_T31TDJ_run_0_pgns_4_model.pth")
-
-    optimizer = torch.optim.Adam(tgt.parameters())
-
-    my_loss = SourceRegLoss(source_model=src, target_train_qty=1200)
-    loss = my_loss(input=predictions, target=actual, current_model=tgt)
-    print("Loss: ", loss.data)
-
-    optimizer.zero_grad()
-    loss.backward()
-    optimizer.step()
